@@ -145,7 +145,12 @@ section { padding: 72px 24px; }
   max-width: 1200px; margin: 0 auto; width: 100%;
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
 }
-@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } .hero-right { display: none; } }
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-right { display: block; }
+  .hero-sub { max-width: 100%; }
+  .hero-note { max-width: 100%; }
+}
 .hero-eyebrow {
   font-family: 'Space Mono', monospace;
   font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
@@ -331,7 +336,7 @@ footer { background: var(--charcoal); padding: 28px 24px; border-top: 1px solid 
       <li><a href="#lets-talk">Let's Talk</a></li>
     </ul>
     <div class="nav-cta"><a href="#lets-talk">Let's Talk</a></div>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -403,7 +408,7 @@ footer { background: var(--charcoal); padding: 28px 24px; border-top: 1px solid 
       <div class="opp-card reveal">
         <div class="opp-card-num">03 —</div>
         <div class="opp-card-title">That is where I think I can help</div>
-        <div class="opp-card-body">I help build the commercial web presence, SEO structure, inquiry paths and outreach assets that turn interest into real conversations. That is the work I am proposing. Not brand strategy. Commercial packaging and growth infrastructure.</div>
+        <div class="opp-card-body">I help build the commercial web presence, SEO structure, inquiry paths and outreach assets that turn interest into real conversations. That is the work I am proposing. Not a generic website redesign. Commercial packaging, buyer paths and growth infrastructure.</div>
       </div>
     </div>
   </div>
@@ -467,7 +472,7 @@ footer { background: var(--charcoal); padding: 28px 24px; border-top: 1px solid 
   <div class="section-inner">
     <div class="eyebrow">03 — The Competitive Moment</div>
     <h2 class="section-title">Who Is Already<br><span>In This Space.</span></h2>
-    <p class="comp-intro">A few well-funded companies are actively selling fan engagement technology to venues and sponsors right now. What they generally lack is a moment people already understand by name. That is where KissCam has a different kind of opening, if the commercial story is packaged clearly enough for buyers to act on it.</p>
+    <p class="comp-intro">A few established companies are actively selling fan engagement technology to venues and sponsors right now. What they generally lack is a moment people already understand by name. That is where KissCam has a different kind of opening, if the commercial story is packaged clearly enough for buyers to act on it.</p>
 
     <div class="comp-grid">
       <div>
@@ -489,7 +494,7 @@ footer { background: var(--charcoal); padding: 28px 24px; border-top: 1px solid 
             <a href="https://brandxr.io" target="_blank" rel="noopener" class="comp-chip">BrandXR</a>
             <a href="https://rockpaperreality.com" target="_blank" rel="noopener" class="comp-chip">Rock Paper Reality</a>
           </div>
-          <div class="comp-row-note">Deployed in major league stadiums. Competing for venue entertainment budgets. Strong on execution. The fans do not know their names.</div>
+          <div class="comp-row-note">Deployed in major league stadiums. Competing for venue entertainment budgets. Strong on execution. They are strong execution partners, but they are not built around a consumer-recognized moment.</div>
         </div>
       </div>
       <div>
@@ -500,11 +505,11 @@ footer { background: var(--charcoal); padding: 28px 24px; border-top: 1px solid 
         </div>
         <div class="comp-row reveal">
           <div class="comp-row-name">Jewelry, Flowers and Gift Categories</div>
-          <div class="comp-row-note">Valentine's, proposals, anniversaries and date nights are established sponsorship categories. KissCam has a natural connection to all of them. The activation story writes itself with the right packaging behind it.</div>
+          <div class="comp-row-note">Valentine's, proposals, anniversaries and date nights are established sponsorship categories. KissCam has a natural connection to all of them. The sponsorship idea is easy to understand when the offer is packaged clearly.</div>
         </div>
         <div class="comp-row reveal">
           <div class="comp-row-name">Sports and Venue Sponsors Looking for Moments</div>
-          <div class="comp-row-note">Beer, insurance, finance and automotive brands sponsor live sports specifically to be present during high-attention crowd moments. KissCam owns one of the most reliably positive of those moments.</div>
+          <div class="comp-row-note">Beer, insurance, finance and automotive brands sponsor live sports specifically to be present during high-attention crowd moments. KissCam is associated with one of the most reliably positive of those moments.</div>
         </div>
       </div>
     </div>
@@ -603,10 +608,13 @@ footer { background: var(--charcoal); padding: 28px 24px; border-top: 1px solid 
 const hamburger = document.getElementById('hamburger');
 const navOverlay = document.getElementById('navOverlay');
 const navClose = document.getElementById('navClose');
-hamburger.addEventListener('click', () => navOverlay.classList.add('open'));
-navClose.addEventListener('click', () => navOverlay.classList.remove('open'));
-navOverlay.addEventListener('click', (e) => { if (e.target === navOverlay) navOverlay.classList.remove('open'); });
-navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navOverlay.classList.remove('open')));
+function openMenu() { navOverlay.classList.add('open'); hamburger.setAttribute('aria-expanded', 'true'); }
+function closeMenu() { navOverlay.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+hamburger.addEventListener('click', openMenu);
+navClose.addEventListener('click', closeMenu);
+navOverlay.addEventListener('click', (e) => { if (e.target === navOverlay) closeMenu(); });
+navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navOverlay.classList.contains('open')) closeMenu(); });
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
