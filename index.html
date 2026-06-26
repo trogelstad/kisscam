@@ -383,6 +383,58 @@ section { padding: 72px 24px; }
 footer { background: var(--ink); padding: 28px 24px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
 .footer-disclaimer { font-size: 11px; color: var(--gray-dark); line-height: 1.75; max-width: 720px; margin: 0 auto; }
 
+/* CONTACT MODAL */
+.modal-backdrop {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.modal-backdrop.open { display: flex; }
+.modal-box {
+  background: var(--charcoal); border: 1px solid rgba(255,255,255,0.10);
+  max-width: 480px; width: 100%; padding: 40px 36px; position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+}
+.modal-close {
+  position: absolute; top: 14px; right: 18px;
+  background: none; border: none; color: var(--gray);
+  font-size: 22px; cursor: pointer; line-height: 1; padding: 4px 8px;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--white); }
+.modal-eyebrow {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 14px;
+}
+.modal-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px; font-weight: 900; line-height: 1.1;
+  margin-bottom: 16px;
+}
+.modal-body {
+  font-size: 15px; color: rgba(255,255,255,0.70);
+  line-height: 1.7; margin-bottom: 28px;
+}
+.modal-contact-card {
+  background: var(--ink); padding: 24px 26px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-left: 3px solid var(--red);
+}
+.modal-contact-name { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.modal-contact-line {
+  font-size: 15px; color: rgba(255,255,255,0.72);
+  margin-bottom: 4px; line-height: 1.6;
+}
+.modal-contact-line a {
+  color: var(--red); text-decoration: none; font-weight: 600;
+}
+.modal-contact-line a:hover { text-decoration: underline; }
+.modal-note {
+  margin-top: 16px; font-size: 12px; color: var(--gray);
+  line-height: 1.6;
+}
+
 /* SCROLL REVEAL */
 .reveal { opacity: 1; transform: none; transition: opacity 0.55s ease, transform 0.55s ease; }
 .reveal.hidden { opacity: 0; transform: translateY(20px); }
@@ -656,7 +708,7 @@ footer { background: var(--ink); padding: 28px 24px; border-top: 1px solid rgba(
       <!-- 02 — VENUE PARTNER PAGE -->
       <div class="mockup-card reveal">
         <div class="mockup-img-wrap">
-          <img src="assets/mockups/m4.png" alt="KissCam venue partner page concept">
+          <img src="assets/mockups/m1.png" alt="KissCam venue partner page concept">
         </div>
         <div class="mockup-meta">
           <div class="mockup-for">02 — For: Venue entertainment and operations teams</div>
@@ -668,7 +720,7 @@ footer { background: var(--ink); padding: 28px 24px; border-top: 1px solid rgba(
       <!-- 03 — SPONSOR ACTIVATION PAGE -->
       <div class="mockup-card reveal">
         <div class="mockup-img-wrap">
-          <img src="assets/mockups/m3.png" alt="KissCam sponsor activation page concept">
+          <img src="assets/mockups/m4.png" alt="KissCam sponsor activation page concept">
         </div>
         <div class="mockup-meta">
           <div class="mockup-for">03 — For: Brand sponsors and partnership managers</div>
@@ -680,7 +732,7 @@ footer { background: var(--ink); padding: 28px 24px; border-top: 1px solid rgba(
       <!-- 04 — LICENSING & MEDIA PAGE -->
       <div class="mockup-card reveal">
         <div class="mockup-img-wrap">
-          <img src="assets/mockups/m1.png" alt="KissCam licensing and media page concept">
+          <img src="assets/mockups/m3.png" alt="KissCam licensing and media page concept">
         </div>
         <div class="mockup-meta">
           <div class="mockup-for">04 — For: Licensing and media partners</div>
@@ -740,7 +792,7 @@ footer { background: var(--ink); padding: 28px 24px; border-top: 1px solid rgba(
       <p class="talk-body">Dana, I built this because I enjoyed our conversation and because I think there may be a real opportunity to make KissCam easier to package, pitch and grow. I am not asking you to make a big decision from a webpage.</p>
       <p class="talk-closer">If this feels useful, I'd enjoy sitting down over coffee for 30 minutes, comparing notes, and hearing where I got it right or wrong.</p>
       <div class="talk-ctas">
-        <a href="mailto:hello@rogelstadmedia.com?subject=KissCam%20%E2%80%94%20Let%27s%20Compare%20Notes" class="btn-primary">Let's Compare Notes Over Coffee &#8594;</a>
+        <button onclick="document.getElementById('contactModal').classList.add('open')" class="btn-primary" style="cursor:pointer;border:none;font-family:inherit;">Let's Compare Notes Over Coffee &#8594;</button>
         <a href="#mockups" class="btn-ghost">Review the Mockups</a>
       </div>
       <div class="talk-contact">
@@ -749,6 +801,23 @@ footer { background: var(--ink); padding: 28px 24px; border-top: 1px solid rgba(
     </div>
   </div>
 </section>
+
+<!-- CONTACT MODAL -->
+<div class="modal-backdrop" id="contactModal" role="dialog" aria-modal="true" aria-label="Contact Trent">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('open')" aria-label="Close">&#10005;</button>
+    <div class="modal-eyebrow">Let's find a time</div>
+    <div class="modal-title">Call or Text to Set Up Coffee.</div>
+    <p class="modal-body">No formal agenda. Just 30 minutes to compare notes and see if there's something worth building together.</p>
+    <div class="modal-contact-card">
+      <div class="modal-contact-name">Trent Rogelstad</div>
+      <div class="modal-contact-line">Rogelstad Media</div>
+      <div class="modal-contact-line">&#128222;&nbsp; <a href="tel:+17208494040">720-849-4040</a> &nbsp;&mdash;&nbsp; Call or Text</div>
+      <div class="modal-contact-line">&#9993;&nbsp; <a href="mailto:hello@rogelstadmedia.com">hello@rogelstadmedia.com</a></div>
+    </div>
+    <div class="modal-note">I'm in Colorado. Happy to meet in person or grab a virtual coffee.</div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -769,6 +838,11 @@ navClose.addEventListener('click', closeMenu);
 navOverlay.addEventListener('click', (e) => { if (e.target === navOverlay) closeMenu(); });
 navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navOverlay.classList.contains('open')) closeMenu(); });
+
+// Contact modal
+const contactModal = document.getElementById('contactModal');
+contactModal.addEventListener('click', (e) => { if (e.target === contactModal) contactModal.classList.remove('open'); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') contactModal.classList.remove('open'); });
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
