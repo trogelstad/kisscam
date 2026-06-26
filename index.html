@@ -327,6 +327,35 @@ section { padding: 72px 24px; }
 .mockup-name { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
 .mockup-desc { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.65; }
 
+/* SYSTEM STRIP — HOW THESE FIT TOGETHER */
+.system-strip {
+  margin-top: 56px; padding: 40px 36px;
+  background: var(--charcoal); border: 1px solid rgba(255,255,255,0.07);
+}
+.system-strip-eyebrow {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 14px;
+}
+.system-strip-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.system-strip-body {
+  font-size: 15px; color: rgba(255,255,255,0.70); line-height: 1.75;
+  max-width: 800px; margin-bottom: 36px;
+}
+.system-strip-body p + p { margin-top: 12px; }
+.system-flow {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+}
+@media (max-width: 768px) { .system-flow { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .system-flow { grid-template-columns: 1fr; } }
+.flow-step { background: var(--ink); padding: 22px 20px; border-top: 2px solid rgba(225,29,72,0.35); }
+.flow-step-num {
+  font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+  color: var(--red); margin-bottom: 8px;
+}
+.flow-step-label { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.flow-step-desc { font-size: 13px; color: rgba(255,255,255,0.60); line-height: 1.6; }
+
 /* SECTION 06 — LET'S TALK */
 #lets-talk { background: var(--charcoal); border-top: 1px solid rgba(255,255,255,0.06); }
 .talk-inner { max-width: 720px; margin: 0 auto; text-align: center; }
@@ -609,49 +638,91 @@ footer { background: var(--ink); padding: 28px 24px; border-top: 1px solid rgba(
   <div class="section-inner">
     <div class="eyebrow">05 — Mockup Directions</div>
     <h2 class="section-title">What a Partner-Ready<br><span>KissCam Could Look Like.</span></h2>
-    <p class="mockup-intro">These are not design themes. Each concept shows how KissCam could be presented to a different commercial buyer with a clearer purpose and a clearer next step.</p>
+    <p class="mockup-intro">These are not final design recommendations or off-the-shelf website themes. They are quick custom visual concepts showing how KissCam could be packaged for different commercial buyers with a clearer purpose, clearer story and clearer next step.</p>
     <div class="mockup-gallery">
+
+      <!-- 01 — COMMERCIAL FRONT DOOR -->
       <div class="mockup-card reveal">
         <div class="mockup-img-wrap">
-          <img src="assets/mockups/m2.png" alt="KissCam homepage concept">
+          <img src="assets/mockups/m2.png" alt="KissCam commercial front door concept">
         </div>
         <div class="mockup-meta">
-          <div class="mockup-for">For: All buyers — commercial front door</div>
-          <div class="mockup-name">Homepage Concept</div>
-          <div class="mockup-desc">The commercial front door for KissCam. Orients every buyer type in the first scroll: venue teams, sponsors, licensing partners and media buyers each see a path forward. Positions KissCam as a partner platform, not just a live-event feature.</div>
+          <div class="mockup-for">01 — For: All commercial buyers</div>
+          <div class="mockup-name">Commercial Front Door</div>
+          <div class="mockup-desc">A platform overview concept that positions KissCam as more than a big-screen moment. It introduces the core buyer paths and gives commercial partners a clearer way to understand the opportunity.</div>
         </div>
       </div>
-      <div class="mockup-card reveal">
-        <div class="mockup-img-wrap">
-          <img src="assets/mockups/m3.png" alt="KissCam licensing and media page concept">
-        </div>
-        <div class="mockup-meta">
-          <div class="mockup-for">For: Media partners and licensing conversations</div>
-          <div class="mockup-name">Licensing and Media Page</div>
-          <div class="mockup-desc">Built for media partners, brand extension conversations and IP licensing inquiries. Explains what can be explored: content partnerships, brand extensions and commercial licensing paths. Gives a licensing director or media buyer a clear picture before agreeing to a first call.</div>
-        </div>
-      </div>
+
+      <!-- 02 — VENUE PARTNER PAGE -->
       <div class="mockup-card reveal">
         <div class="mockup-img-wrap">
           <img src="assets/mockups/m1.png" alt="KissCam venue partner page concept">
         </div>
         <div class="mockup-meta">
-          <div class="mockup-for">For: Venue entertainment and operations teams</div>
+          <div class="mockup-for">02 — For: Venue entertainment and operations teams</div>
           <div class="mockup-name">Venue Partner Page</div>
-          <div class="mockup-desc">Built for the person who has to pitch KissCam internally before it gets on the calendar. Covers what KissCam adds to the event, how it fits into the existing show, how sponsors can be included and what the next step looks like. Removes the guesswork for the director making the case upstairs.</div>
+          <div class="mockup-desc">A venue-facing concept showing how KissCam could live inside arenas, stadiums and special events through sponsor-ready activations, AR Mirror experiences, photo booths and measurable fan engagement.</div>
         </div>
       </div>
+
+      <!-- 03 — SPONSOR ACTIVATION PAGE -->
       <div class="mockup-card reveal">
         <div class="mockup-img-wrap">
-          <img src="assets/mockups/m4.png" alt="KissCam sponsor page concept">
+          <img src="assets/mockups/m4.png" alt="KissCam sponsor activation page concept">
         </div>
         <div class="mockup-meta">
-          <div class="mockup-for">For: Brand sponsors and partnership managers</div>
-          <div class="mockup-name">Sponsor Page</div>
-          <div class="mockup-desc">A sponsor sales page, not a platform overview. Covers what sponsors get, where the brand appears, event-day visibility, social and content opportunities and how to start the conversation. Built for the partnership manager who needs to explain the investment to someone above them. Relevant categories: dating apps, jewelry, restaurants, florists, travel and local date-night brands.</div>
+          <div class="mockup-for">03 — For: Brand sponsors and partnership managers</div>
+          <div class="mockup-name">Sponsor Activation Page</div>
+          <div class="mockup-desc">A sponsor-facing concept showing how brands could connect with fans through emotional live moments, branded overlays, digital keepsakes, category-specific activations and measurable engagement.</div>
+        </div>
+      </div>
+
+      <!-- 04 — LICENSING & MEDIA PAGE -->
+      <div class="mockup-card reveal">
+        <div class="mockup-img-wrap">
+          <img src="assets/mockups/m3.png" alt="KissCam licensing and media page concept">
+        </div>
+        <div class="mockup-meta">
+          <div class="mockup-for">04 — For: Licensing and media partners</div>
+          <div class="mockup-name">Licensing &amp; Media Page</div>
+          <div class="mockup-desc">A licensing and media concept showing how KissCam could package brand usage, consumer products, entertainment, content opportunities, approved assets and partner inquiries beyond the arena.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HOW THESE FIT TOGETHER -->
+    <div class="system-strip reveal">
+      <div class="system-strip-eyebrow">How These Fit Together</div>
+      <div class="system-strip-title">These concepts are meant to work together, not stand alone.</div>
+      <div class="system-strip-body">
+        <p>The idea is simple: give KissCam a clearer commercial front door, then route each buyer toward the page that answers their specific questions. Venue teams need to understand event fit. Sponsors need to see activation value. Licensing and media partners need to understand brand usage, content opportunities and next steps.</p>
+        <p>That is the opportunity I see: not a cosmetic redesign, but a clearer system for turning recognition into real partner conversations.</p>
+      </div>
+      <div class="system-flow">
+        <div class="flow-step">
+          <div class="flow-step-num">01 — Attract</div>
+          <div class="flow-step-label">Commercial Front Door</div>
+          <div class="flow-step-desc">Homepage positions KissCam as a partner platform.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">02 — Route</div>
+          <div class="flow-step-label">Buyer Paths</div>
+          <div class="flow-step-desc">Venues, sponsors, licensing and media each get their own path.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">03 — Convert</div>
+          <div class="flow-step-label">Partner Inquiry</div>
+          <div class="flow-step-desc">Each page has a clear inquiry step built in.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">04 — Support</div>
+          <div class="flow-step-label">Follow-Up Assets</div>
+          <div class="flow-step-desc">One-sheets, media kit, case studies and outreach assets help the team follow up.</div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
